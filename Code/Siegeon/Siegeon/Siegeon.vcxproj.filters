@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\Abstractions\GameLoop\GameModule.cpp" />
+    <ClCompile Include="src\Abstractions\GameLoop\GameStateManager.cpp" />
+    <ClCompile Include="src\Abstractions\GameLoop\GraphicsManager.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\Abstractions\GameLoop\GameModule.h" />
+    <ClInclude Include="src\Abstractions\GameLoop\GameStateManager.h" />
+    <ClInclude Include="src\Abstractions\GameLoop\GraphicsManager.h" />
+  </ItemGroup>
+</Project>
