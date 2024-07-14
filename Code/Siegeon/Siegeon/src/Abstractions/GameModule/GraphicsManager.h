@@ -3,20 +3,20 @@
 #include <memory>
 #include <SFML/System.hpp>
 
-#include "WorldState.h"
+#include "World.h"
 #include "SharedState.h"
 
 
-namespace GameLoop
+namespace GameModule
 {
 	class GraphicsManager
 	{
 	public:
 
-		GraphicsManager(std::shared_ptr<WorldState> worldState, std::shared_ptr<SharedState> sharedState);
+		GraphicsManager(std::shared_ptr<SharedState> sharedState);
 		virtual ~GraphicsManager();
 
-		virtual void setWorldState(std::shared_ptr<WorldState> worldState) = 0;
+		virtual void setWorldState(std::shared_ptr<World> worldState) = 0;
 
 		virtual void init() = 0;
 		virtual void run() final;
@@ -26,11 +26,10 @@ namespace GameLoop
 
 	private:
 
-		std::shared_ptr<WorldState> _worldState;
 		std::shared_ptr<SharedState> _sharedState;
 
 		sf::Clock _clock;
-		double timer;
+		double _timer;
 
 
 		void _runInnerLoop();

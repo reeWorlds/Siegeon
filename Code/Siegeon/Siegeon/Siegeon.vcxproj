@@ -163,20 +163,20 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\Abstractions\GameLoop\GameModule.cpp" />
-    <ClCompile Include="src\Abstractions\GameLoop\GameStateManager.cpp" />
-    <ClCompile Include="src\Abstractions\GameLoop\GraphicsManager.cpp" />
-    <ClCompile Include="src\Abstractions\GameLoop\SharedState.cpp" />
-    <ClCompile Include="src\Abstractions\GameLoop\WorldState.cpp" />
+    <ClCompile Include="src\Abstractions\GameModule\GameModule.cpp" />
+    <ClCompile Include="src\Abstractions\GameModule\WorldManager.cpp" />
+    <ClCompile Include="src\Abstractions\GameModule\GraphicsManager.cpp" />
+    <ClCompile Include="src\Abstractions\GameModule\SharedState.cpp" />
+    <ClCompile Include="src\Abstractions\GameModule\World.cpp" />
     <ClCompile Include="src\main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\Abstractions\GameLoop\GameModule.h" />
-    <ClInclude Include="src\Abstractions\GameLoop\GameStateManager.h" />
-    <ClInclude Include="src\Abstractions\GameLoop\GraphicsManager.h" />
-    <ClInclude Include="src\Abstractions\GameLoop\SharedState.h" />
-    <ClInclude Include="src\Abstractions\GameLoop\WorldState.h" />
-    <ClInclude Include="src\Constants\GameLoop.h" />
+    <ClInclude Include="src\Abstractions\GameModule\GameModule.h" />
+    <ClInclude Include="src\Abstractions\GameModule\WorldManager.h" />
+    <ClInclude Include="src\Abstractions\GameModule\GraphicsManager.h" />
+    <ClInclude Include="src\Abstractions\GameModule\SharedState.h" />
+    <ClInclude Include="src\Abstractions\GameModule\World.h" />
+    <ClInclude Include="src\Constants\GameModule.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
