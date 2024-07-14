@@ -5,10 +5,15 @@
     <ClCompile Include="src\Abstractions\GameLoop\GameModule.cpp" />
     <ClCompile Include="src\Abstractions\GameLoop\GameStateManager.cpp" />
     <ClCompile Include="src\Abstractions\GameLoop\GraphicsManager.cpp" />
+    <ClCompile Include="src\Abstractions\GameLoop\WorldState.cpp" />
+    <ClCompile Include="src\Abstractions\GameLoop\SharedState.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Abstractions\GameLoop\GameModule.h" />
     <ClInclude Include="src\Abstractions\GameLoop\GameStateManager.h" />
     <ClInclude Include="src\Abstractions\GameLoop\GraphicsManager.h" />
+    <ClInclude Include="src\Constants\GameLoop.h" />
+    <ClInclude Include="src\Abstractions\GameLoop\WorldState.h" />
+    <ClInclude Include="src\Abstractions\GameLoop\SharedState.h" />
   </ItemGroup>
 </Project>
