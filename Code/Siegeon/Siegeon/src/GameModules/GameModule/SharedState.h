@@ -2,7 +2,7 @@
 
 #include <atomic>
 
-#include "../../Constants/GameModule.h"
+#include "Constants.h"
 
 
 namespace GameModule

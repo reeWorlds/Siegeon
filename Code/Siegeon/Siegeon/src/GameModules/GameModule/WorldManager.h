@@ -36,7 +36,7 @@ namespace GameModule
 		double _heavyTimer;
 
 
-		void _runInnerLoop();
+		virtual void _runInnerLoop() final;
 
 	};
 }

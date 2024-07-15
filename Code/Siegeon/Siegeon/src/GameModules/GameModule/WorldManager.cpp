@@ -3,7 +3,7 @@
 #include <thread>
 
 #include "WorldManager.h"
-#include "../../Constants/GameModule.h"
+#include "Constants.h"
 
 using SharedStatePtr = std::shared_ptr<GameModule::SharedState>;
 

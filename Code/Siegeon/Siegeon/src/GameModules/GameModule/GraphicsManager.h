@@ -32,7 +32,7 @@ namespace GameModule
 		double _timer;
 
 
-		void _runInnerLoop();
+		virtual void _runInnerLoop() final;
 
 	};
 }

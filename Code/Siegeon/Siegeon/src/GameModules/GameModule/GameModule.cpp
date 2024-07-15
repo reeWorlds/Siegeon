@@ -3,7 +3,7 @@
 #include <chrono>
 
 #include "GameModule.h"
-#include "../../Constants/GameModule.h"
+#include "Constants.h"
 
 using GameModulePtr = std::shared_ptr<GameModule::GameModule>;
 using WorldPtr = std::shared_ptr<GameModule::World>;
