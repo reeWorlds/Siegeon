@@ -4,7 +4,7 @@
 
 #include <SFML/Graphics.hpp>
 
-using namespace Utils::StringUtils;
+using namespace StringUtils;
 
 
 namespace GameSettings

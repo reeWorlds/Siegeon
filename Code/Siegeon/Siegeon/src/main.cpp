@@ -1,13 +1,13 @@
 #include "Resources/FontManager/FontManager.h"
 #include "Core/GameSettings/GameSettings.h"
-#include "Core/RenderWindow/RenderWindowManager.h"
+#include "Core/Window/WindowManager.h"
 
 
 void initSingletons()
 {
 	FontManager::FontManager::getInstance();
 	GameSettings::GameSettings::getInstance();
-	//RenderWindowManager::getInstance();
+	Window::WindowManager::getInstance();
 }
 
 
@@ -16,7 +16,7 @@ int main()
 {
 	initSingletons();
 
-
+	
 
 	return 0;
 }
