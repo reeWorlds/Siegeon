@@ -2,18 +2,33 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="src\main.cpp" />
-    <ClCompile Include="src\Abstractions\GameModule\GameModule.cpp" />
-    <ClCompile Include="src\Abstractions\GameModule\WorldManager.cpp" />
-    <ClCompile Include="src\Abstractions\GameModule\GraphicsManager.cpp" />
-    <ClCompile Include="src\Abstractions\GameModule\World.cpp" />
-    <ClCompile Include="src\Abstractions\GameModule\SharedState.cpp" />
+    <ClCompile Include="src\GameModules\GameModule\GameModule.cpp" />
+    <ClCompile Include="src\GameModules\GameModule\WorldManager.cpp" />
+    <ClCompile Include="src\GameModules\GameModule\GraphicsManager.cpp" />
+    <ClCompile Include="src\GameModules\GameModule\World.cpp" />
+    <ClCompile Include="src\GameModules\GameModule\SharedState.cpp" />
+    <ClCompile Include="src\Core\RenderWindow\RenderWindowManager.cpp" />
+    <ClCompile Include="src\Core\GameSettings\GameSettings.cpp" />
+    <ClCompile Include="src\Resources\FontManager\FontManager.cpp" />
+    <ClCompile Include="src\Core\GameSettings\SettingsHolder.cpp" />
+    <ClCompile Include="src\Core\GameSettings\SettingsFileManager.cpp" />
+    <ClCompile Include="src\Utils\StringUtils\StringUtils.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\Abstractions\GameModule\GameModule.h" />
-    <ClInclude Include="src\Abstractions\GameModule\WorldManager.h" />
-    <ClInclude Include="src\Abstractions\GameModule\GraphicsManager.h" />
-    <ClInclude Include="src\Constants\GameModule.h" />
-    <ClInclude Include="src\Abstractions\GameModule\World.h" />
-    <ClInclude Include="src\Abstractions\GameModule\SharedState.h" />
+    <ClInclude Include="src\GameModules\GameModule\GameModule.h" />
+    <ClInclude Include="src\GameModules\GameModule\WorldManager.h" />
+    <ClInclude Include="src\GameModules\GameModule\GraphicsManager.h" />
+    <ClInclude Include="src\GameModules\GameModule\Constants.h" />
+    <ClInclude Include="src\GameModules\GameModule\World.h" />
+    <ClInclude Include="src\GameModules\GameModule\SharedState.h" />
+    <ClInclude Include="src\Core\RenderWindow\RenderWindowManager.h" />
+    <ClInclude Include="src\Core\GameSettings\GameSettings.h" />
+    <ClInclude Include="src\Core\RenderWindow\Constants.h" />
+    <ClInclude Include="src\Core\GameSettings\Constants.h" />
+    <ClInclude Include="src\Resources\FontManager\Constants.h" />
+    <ClInclude Include="src\Resources\FontManager\FontManager.h" />
+    <ClInclude Include="src\Core\GameSettings\SettingsHolder.h" />
+    <ClInclude Include="src\Core\GameSettings\SettingsFileManager.h" />
+    <ClInclude Include="src\Utils\StringUtils\StringUtils.h" />
   </ItemGroup>
 </Project>
