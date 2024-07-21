@@ -11,6 +11,11 @@ namespace Window
 		return instance;
 	}
 
+	sf::RenderWindow& WindowManager::getWindow()
+	{
+		return _window;
+	}
+
 	void WindowManager::createWindow()
 	{
 		GameSettings::GameSettings& gameSettings = GameSettings::GameSettings::getInstance();
@@ -19,9 +24,25 @@ namespace Window
 		int32_t style = _getWindowStyle(gameSettings.getVideoMode());
 
 		sf::ContextSettings contextSettings = _getContextSettings();
-		contextSettings.antialiasingLevel = 4;
+
+		if (_window.isOpen())
+		{
+			_window.close();
+		}
 
 		_window.create(videoMode, WINDOW_TITLE, style, contextSettings);
+
+		_window.setActive(false);
+	}
+
+	void WindowManager::setWindowActive()
+	{
+		_window.setActive(true);
+	}
+
+	void WindowManager::setWindowInactive()
+	{
+		_window.setActive(false);
 	}
 
 	WindowManager::WindowManager()
@@ -31,7 +52,10 @@ namespace Window
 
 	WindowManager::~WindowManager()
 	{
-
+		if (_window.isOpen())
+		{
+			_window.close();
+		}
 	}
 
 	sf::VideoMode WindowManager::_getVideoMode(sf::Vector2i resolution)

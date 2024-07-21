@@ -15,6 +15,8 @@ namespace GameModule
 	WorldManager::WorldManager(SharedStatePtr sharedState)
 	{
 		_sharedState = sharedState;
+		_lightTimer = 0.0;
+		_heavyTimer = 0.0;
 	}
 	
 	WorldManager::~WorldManager() {}

@@ -2,6 +2,8 @@
 #include "Core/GameSettings/GameSettings.h"
 #include "Core/Window/WindowManager.h"
 
+#include "GameModules/MainMenu/MainMenu.h"
+
 
 void initSingletons()
 {
@@ -10,13 +12,22 @@ void initSingletons()
 	Window::WindowManager::getInstance();
 }
 
+void playGame()
+{
+	using namespace GameModules::MainMenu;
+
+	std::unique_ptr<MainMenu> menu = std::make_unique<MainMenu>();
+	menu->run();
+}
+
 
 
 int main()
 {
 	initSingletons();
 
-	
+	playGame();
+
 
 	return 0;
 }

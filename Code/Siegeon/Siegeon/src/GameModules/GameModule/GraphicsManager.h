@@ -16,7 +16,7 @@ namespace GameModule
 		GraphicsManager(std::shared_ptr<SharedState> sharedState);
 		virtual ~GraphicsManager();
 
-		virtual void setWorldState(std::shared_ptr<World> worldState) = 0;
+		virtual void setWorld(std::shared_ptr<World> world) = 0;
 
 		virtual void init() = 0;
 		virtual void run() final;

@@ -16,7 +16,7 @@ namespace GameModule
 		WorldManager(std::shared_ptr<SharedState> sharedState);
 		virtual ~WorldManager();
 
-		virtual void setWorldState(std::shared_ptr<World> worldState) = 0;
+		virtual void setWorld(std::shared_ptr<World> world) = 0;
 		virtual void copyWorld(std::shared_ptr<World> from, std::shared_ptr<World> to) = 0;
 
 		virtual void init() = 0;

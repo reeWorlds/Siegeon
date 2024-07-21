@@ -13,7 +13,12 @@ namespace Window
 
 		static WindowManager& getInstance();
 
+		sf::RenderWindow& getWindow();
+
 		void createWindow();
+
+		void setWindowActive();
+		void setWindowInactive();
 
 
 	private:
