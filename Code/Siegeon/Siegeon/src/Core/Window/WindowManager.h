@@ -1,6 +1,8 @@
 #pragma once
 
 #include "../GameSettings/GameSettings.h"
+#include "../Containers/ThreadDeque.hpp"
+#include "../Entities/WindowEventData.h"
 
 #include <SFML/Graphics.hpp>
 
@@ -11,14 +13,25 @@ namespace Window
 	{
 	public:
 
+		Core::Containers::ThreadDeque<Core::Entities::WindowEventData> eventDeque;
+
+
 		static WindowManager& getInstance();
 
+		sf::RenderWindow& getWindow();
+
 		void createWindow();
+
+		void setWindowActive();
+		void setWindowInactive();
+
+		sf::Time getElapsedTime();
 
 
 	private:
 
 		sf::RenderWindow _window;
+		sf::Clock _clock;
 
 
 		WindowManager();

@@ -4,6 +4,7 @@
 
 #include "GraphicsManager.h"
 #include "Constants.h"
+#include "../../Core/Window/WindowManager.h"
 
 using SharedStatePtr = std::shared_ptr<GameModule::SharedState>;
 
@@ -15,6 +16,7 @@ namespace GameModule
 	GraphicsManager::GraphicsManager(SharedStatePtr sharedState)
 	{
 		_sharedState = sharedState;
+		_timer = 0.0;
 	}
 
 	GraphicsManager::~GraphicsManager() {}
@@ -67,7 +69,11 @@ namespace GameModule
 				_timer -= MS_PER_FRAME;
 				_timer = std::min(_timer, (double)MS_PER_FRAME);
 
+				Window::WindowManager::getInstance().setWindowActive();
+				
 				render();
+
+				Window::WindowManager::getInstance().setWindowInactive();
 
 				sharedStatePtr->m_worldSwapStatus = WorldSwapStatus::INITIATED;
 

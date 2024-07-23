@@ -15,6 +15,8 @@ namespace GameModule
 	WorldManager::WorldManager(SharedStatePtr sharedState)
 	{
 		_sharedState = sharedState;
+		_lightTimer = 0.0;
+		_heavyTimer = 0.0;
 	}
 	
 	WorldManager::~WorldManager() {}
@@ -65,7 +67,7 @@ namespace GameModule
 			_lightTimer += elapsedTime;
 			_heavyTimer += elapsedTime;
 
-			devicesUpate();
+			devicesUpdate();
 
 			if (_lightTimer > MS_PER_LIGHT_UPDATE)
 			{

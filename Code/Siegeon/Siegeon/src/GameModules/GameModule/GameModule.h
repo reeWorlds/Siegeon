@@ -27,6 +27,15 @@ namespace GameModule
 
 	protected:
 
+		virtual void _setWorld(int32_t index, std::shared_ptr<World> world) final;
+		virtual void _setSharedState(std::shared_ptr<SharedState> sharedState) final;
+		virtual void _setWorldManager(std::shared_ptr<WorldManager> worldManager) final;
+		virtual void _setGraphicsManager(std::shared_ptr<GraphicsManager> graphicsManager) final;
+
+		virtual int32_t _getWorldIndex() final;
+
+	private:
+
 		std::shared_ptr<World> _worlds[2];
 		int32_t _worldIndex;
 
@@ -36,18 +45,10 @@ namespace GameModule
 		std::shared_ptr<GraphicsManager> _graphicsManager;
 
 
-		void setWorld(int32_t index, std::shared_ptr<World> world);
-		void setSharedState(std::shared_ptr<SharedState> sharedState);
-		void setWorldManager(std::shared_ptr<WorldManager> worldManager);
-		void setGraphicsManager(std::shared_ptr<GraphicsManager> graphicsManager);
-
-
-	private:
-
 		virtual void _initOnRun() final;
 		virtual void _runLoop() final;
 
-		void _swapWorlds(WorldSwapStatus swapStatus);
+		virtual void _swapWorlds(WorldSwapStatus swapStatus) final;
 
 	};
 }

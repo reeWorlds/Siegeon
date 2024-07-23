@@ -16,29 +16,34 @@ using namespace std::chrono;
 
 namespace GameModule
 {
-	GameModule::GameModule() : _worldIndex(0) {}
+	GameModule::GameModule() : _worldIndex(0) { }
 
 	GameModule::~GameModule() { }
 
-	void GameModule::setWorld(int32_t index, WorldPtr world)
+	void GameModule::_setWorld(int32_t index, WorldPtr world)
 	{
 		assert(index >= 0 && index < 2 && "Index out of bounds");
 		_worlds[index] = world;
 	}
 
-	void GameModule::setSharedState(SharedStatePtr sharedState)
+	void GameModule::_setSharedState(SharedStatePtr sharedState)
 	{
 		_sharedState = sharedState;
 	}
 
-	void GameModule::setWorldManager(WorldManagerPtr worldManager)
+	void GameModule::_setWorldManager(WorldManagerPtr worldManager)
 	{
 		_worldManager = worldManager;
 	}
 
-	void GameModule::setGraphicsManager(GraphicsManagerPtr graphicsManager)
+	void GameModule::_setGraphicsManager(GraphicsManagerPtr graphicsManager)
 	{
 		_graphicsManager = graphicsManager;
+	}
+
+	int32_t GameModule::_getWorldIndex()
+	{
+		return _worldIndex;
 	}
 
 	void GameModule::run()
@@ -51,14 +56,14 @@ namespace GameModule
 	void GameModule::runSubGame(GameModulePtr subGame)
 	{
 		auto runSubGameLoop = [this, subGame]()
-		{
-			_sharedState->m_isRunningSubGameModule = true;
+			{
+				_sharedState->m_isRunningSubGameModule = true;
 
-			assert(subGame != nullptr && "SubGame is nullptr");
-			subGame->run();
+				assert(subGame != nullptr && "SubGame is nullptr");
+				subGame->run();
 
-			_sharedState->m_isRunningSubGameModule = false;
-		};
+				_sharedState->m_isRunningSubGameModule = false;
+			};
 
 		std::thread subGameThread(runSubGameLoop);
 		subGameThread.detach();
@@ -73,10 +78,12 @@ namespace GameModule
 		assert(_sharedState != nullptr && "SharedState is nullptr");
 
 		assert(_worldManager != nullptr && "WorldManager is nullptr");
+		_worldManager->setWorld(_worlds[_worldIndex]);
 		std::thread worldManagerThread(&WorldManager::run, _worldManager);
 		worldManagerThread.detach();
 
 		assert(_graphicsManager != nullptr && "GraphicsManager is nullptr");
+		_graphicsManager->setWorld(_worlds[_worldIndex ^ 1]);
 		std::thread graphicsManagerThread(&GraphicsManager::run, _graphicsManager);
 		graphicsManagerThread.detach();
 	}
@@ -135,9 +142,9 @@ namespace GameModule
 			break;
 
 		case WorldSwapStatus::SWAPING_STATES:
-			_graphicsManager->setWorldState(_worlds[_worldIndex]);
+			_graphicsManager->setWorld(_worlds[_worldIndex]);
 			_worldManager->copyWorld(_worlds[_worldIndex], _worlds[_worldIndex ^ 1]);
-			_worldManager->setWorldState(_worlds[_worldIndex ^ 1]);
+			_worldManager->setWorld(_worlds[_worldIndex ^ 1]);
 			_worldIndex ^= 1;
 			_sharedState->m_worldSwapStatus = WorldSwapStatus::INACTIVE;
 			break;
