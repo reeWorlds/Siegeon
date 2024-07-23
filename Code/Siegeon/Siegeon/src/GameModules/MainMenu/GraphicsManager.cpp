@@ -38,7 +38,7 @@ namespace GameModules
 
 			sf::CircleShape shape(100.f, 4);
 			shape.setFillColor(sf::Color::Green);
-			shape.setPosition(world->pos, world->pos);
+			shape.setPosition((float)world->pos, (float)world->pos);
 			window.draw(shape);
 
 

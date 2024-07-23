@@ -28,7 +28,7 @@ namespace GameModules
 
 			void init() override;
 
-			void devicesUpate() override;
+			void devicesUpdate() override;
 			void lightUpdate(double elapsedTime) override;
 			void heavyUpdate(double elapsedTime) override;
 

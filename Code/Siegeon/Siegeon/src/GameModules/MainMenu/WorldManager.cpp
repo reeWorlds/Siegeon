@@ -1,5 +1,8 @@
 #include "WorldManager.h"
+#include "Constants.h"
 #include "../../Core/Window/WindowManager.h"
+#include "../../Core/Entities/WindowEventData.h"
+#include "../../Core/Containers/ThreadDeque.hpp"
 
 #include <SFML/Window.hpp>
 #include <SFML/Graphics.hpp>
@@ -8,6 +11,8 @@
 
 using BaseSharedState = GameModule::SharedState;
 using BaseWorld = GameModule::World;
+using WindowEventData = Core::Entities::WindowEventData;
+using ThreadDeque = Core::Containers::ThreadDeque<WindowEventData>;
 
 
 namespace GameModules
@@ -40,20 +45,39 @@ namespace GameModules
 
 		}
 
-		void WorldManager::devicesUpate()
+		void WorldManager::devicesUpdate()
 		{
-			//sf::Event event;
-			//sf::RenderWindow& window = Window::WindowManager::getInstance().getWindow();
-			//
-			//while (window.pollEvent(event))
-			//{
-			//	if (event.type == sf::Event::Closed)
-			//	{
-			//		sharedState->m_exitGame = true;
-			//	}
-			//
-			//
-			//}
+			int32_t eventsCount = 0;
+			
+			ThreadDeque& eventDeque = Window::WindowManager::getInstance().eventDeque;
+			
+			while (!eventDeque.empty())
+			{
+				std::optional<WindowEventData> eventData = eventDeque.front_and_pop();
+
+				if (eventData.has_value())
+				{
+					sf::Event event = eventData.value().event;
+
+					// if '+' was pressed
+					if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Add)
+					{
+						world->pos += 10;
+					}
+					// if '-' was pressed
+					else if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Subtract)
+					{
+						world->pos -= 10;
+					}
+				}
+				else
+				{
+					break;
+				}
+			
+				eventsCount++;
+				if (eventsCount >= MAX_EVENTS_PER_LOOP) { break; }
+			}
 		}
 		
 		void WorldManager::lightUpdate(double elapsedTime)

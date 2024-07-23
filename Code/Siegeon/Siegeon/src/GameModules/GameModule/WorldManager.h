@@ -22,7 +22,7 @@ namespace GameModule
 		virtual void init() = 0;
 		virtual void run() final;
 
-		virtual void devicesUpate() = 0;
+		virtual void devicesUpdate() = 0;
 		virtual void lightUpdate(double elapsedTime) = 0;
 		virtual void heavyUpdate(double elapsedTime) = 0;
 

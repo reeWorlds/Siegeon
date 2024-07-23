@@ -67,7 +67,7 @@ namespace GameModule
 			_lightTimer += elapsedTime;
 			_heavyTimer += elapsedTime;
 
-			devicesUpate();
+			devicesUpdate();
 
 			if (_lightTimer > MS_PER_LIGHT_UPDATE)
 			{

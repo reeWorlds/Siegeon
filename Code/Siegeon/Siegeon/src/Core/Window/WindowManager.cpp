@@ -32,6 +32,8 @@ namespace Window
 
 		_window.create(videoMode, WINDOW_TITLE, style, contextSettings);
 
+		_window.setKeyRepeatEnabled(false);
+
 		_window.setActive(false);
 	}
 
@@ -45,9 +47,16 @@ namespace Window
 		_window.setActive(false);
 	}
 
+	sf::Time WindowManager::getElapsedTime()
+	{
+		return _clock.getElapsedTime();
+	}
+
 	WindowManager::WindowManager()
 	{
 		createWindow();
+
+		_clock.restart();
 	}
 
 	WindowManager::~WindowManager()

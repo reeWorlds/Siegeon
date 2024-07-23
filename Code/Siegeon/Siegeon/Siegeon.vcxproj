@@ -167,12 +167,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Core\Entities\WindowEventData.cpp" />
     <ClCompile Include="src\Core\GameSettings\SettingsHolder.cpp" />
     <ClCompile Include="src\GameModules\MainMenu\GraphicsManager.cpp" />
     <ClCompile Include="src\GameModules\MainMenu\MainMenu.cpp" />
     <ClCompile Include="src\GameModules\MainMenu\SharedState.cpp" />
     <ClCompile Include="src\GameModules\MainMenu\World.cpp" />
     <ClCompile Include="src\GameModules\MainMenu\WorldManager.cpp" />
+    <ClCompile Include="src\main_thread_loop.cpp" />
     <ClCompile Include="src\Resources\FontManager\FontManager.cpp" />
     <ClCompile Include="src\Core\GameSettings\GameSettings.cpp" />
     <ClCompile Include="src\Core\GameSettings\SettingsFileManager.cpp" />
@@ -186,6 +188,8 @@
     <ClCompile Include="src\Utils\StringUtils\StringUtils.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Core\Containers\ThreadDeque.hpp" />
+    <ClInclude Include="src\Core\Entities\WindowEventData.h" />
     <ClInclude Include="src\Core\GameSettings\SettingsHolder.h" />
     <ClInclude Include="src\GameModules\MainMenu\Constants.h" />
     <ClInclude Include="src\GameModules\MainMenu\GraphicsManager.h" />
@@ -193,6 +197,7 @@
     <ClInclude Include="src\GameModules\MainMenu\SharedState.h" />
     <ClInclude Include="src\GameModules\MainMenu\World.h" />
     <ClInclude Include="src\GameModules\MainMenu\WorldManager.h" />
+    <ClInclude Include="src\main_thread_loop.h" />
     <ClInclude Include="src\Resources\FontManager\Constants.h" />
     <ClInclude Include="src\Resources\FontManager\FontManager.h" />
     <ClInclude Include="src\Core\GameSettings\Constants.h" />
