@@ -5,26 +5,6 @@
 
 namespace StringUtils
 {
-	std::string ftos(float x, int precision)
-	{
-		std::ostringstream out;
-
-		out.precision(precision);
-		out << std::fixed << x;
-
-		return out.str();
-	}
-
-	std::string dtos(double x, int precision)
-	{
-		std::ostringstream out;
-
-		out.precision(precision);
-		out << std::fixed << x;
-		
-		return out.str();
-	}
-
 	std::vector<std::string> splitString(const std::string& str, char delimiter)
 	{
 		std::vector<std::string> result;
