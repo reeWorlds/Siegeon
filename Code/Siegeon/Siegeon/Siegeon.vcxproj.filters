@@ -20,6 +20,10 @@
     <ClCompile Include="src\GameModules\MainMenu\WorldManager.cpp" />
     <ClCompile Include="src\main_thread_loop.cpp" />
     <ClCompile Include="src\Core\Entities\WindowEventData.cpp" />
+    <ClCompile Include="src\Graphics\UI\Button.cpp" />
+    <ClCompile Include="src\Graphics\UI\Interface.cpp" />
+    <ClCompile Include="src\Graphics\UI\Widget.cpp" />
+    <ClCompile Include="src\Graphics\UI\WidgetGroup.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\GameModules\GameModule\GameModule.h" />
@@ -46,5 +50,10 @@
     <ClInclude Include="src\main_thread_loop.h" />
     <ClInclude Include="src\Core\Entities\WindowEventData.h" />
     <ClInclude Include="src\Core\Containers\ThreadDeque.hpp" />
+    <ClInclude Include="src\Graphics\UI\Constants.h" />
+    <ClInclude Include="src\Graphics\UI\Button.h" />
+    <ClInclude Include="src\Graphics\UI\Widget.h" />
+    <ClInclude Include="src\Graphics\UI\WidgetGroup.h" />
+    <ClInclude Include="src\Graphics\UI\Interface.h" />
   </ItemGroup>
 </Project>

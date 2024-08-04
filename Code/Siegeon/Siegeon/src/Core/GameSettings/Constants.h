@@ -1,6 +1,7 @@
 #pragma once
 
 #include <stdint.h>
+#include <SFML/System.hpp>
 
 
 namespace GameSettings
@@ -24,8 +25,8 @@ namespace GameSettings
 
 	inline constexpr VideoMode DEFAULT_VIDEO_MODE = VideoMode::WINDOWED;
 	inline constexpr const char* DEFAULT_RESOLUTION = "1280x720";
+	inline const sf::Vector2i DEFAULT_RESOLUTION_INT = sf::Vector2i(1280, 720);
 
-	inline constexpr int32_t DEFAULT_UI_SCALE = 100;
 	inline constexpr const char* DEFAULT_FONT_NAME = "Orbitron-Medium";
 
 	inline constexpr double MIN_VOLUME = 0.0;
@@ -37,6 +38,4 @@ namespace GameSettings
 	{
 		"800x600", "1280x720", "1366x768", "1600x900", "1920x1080"
 	};
-
-	inline constexpr int32_t POSSIBLE_UI_SCALES[] = { 50, 75, 100, 125, 150 };
 }

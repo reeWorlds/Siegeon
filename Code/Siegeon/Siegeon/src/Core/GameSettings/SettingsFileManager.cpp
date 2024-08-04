@@ -20,7 +20,6 @@ namespace GameSettings
 		settings.difficultyLevel = static_cast<DifficultyLevel>(json["difficultyLevel"]);
 		settings.videoMode = static_cast<VideoMode>(json["videoMode"]);
 		settings.resolution = json["resolution"];
-		settings.uiScale = json["uiScale"];
 		settings.fontName = json["fontName"];
 		settings.soundVolume = json["soundVolume"];
 		settings.musicVolume = json["musicVolume"];
@@ -44,7 +43,6 @@ namespace GameSettings
 		json["difficultyLevel"] = static_cast<int32_t>(settings.difficultyLevel);
 		json["videoMode"] = static_cast<int32_t>(settings.videoMode);
 		json["resolution"] = settings.resolution;
-		json["uiScale"] = settings.uiScale;
 		json["fontName"] = settings.fontName;
 		json["soundVolume"] = settings.soundVolume;
 		json["musicVolume"] = settings.musicVolume;
@@ -57,7 +55,6 @@ namespace GameSettings
 		if (!json.contains("difficultyLevel") || !json["difficultyLevel"].is_number_integer()) { return false; }
 		if (!json.contains("videoMode") || !json["videoMode"].is_number_integer()) { return false; }
 		if (!json.contains("resolution") || !json["resolution"].is_string()) { return false; }
-		if (!json.contains("uiScale") || !json["uiScale"].is_number_integer()) { return false; }
 		if (!json.contains("fontName") || !json["fontName"].is_string()) { return false; }
 		if (!json.contains("soundVolume") || !json["soundVolume"].is_number_float()) { return false; }
 		if (!json.contains("musicVolume") || !json["musicVolume"].is_number_float()) { return false; }

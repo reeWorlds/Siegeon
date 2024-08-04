@@ -31,11 +31,6 @@ namespace GameSettings
 		return _settings.getResolutionInt();
 	}
 	
-	int32_t GameSettings::getUiScale() const
-	{
-		return _settings.uiScale;
-	}
-	
 	std::string GameSettings::getFontName() const
 	{
 		return _settings.fontName;

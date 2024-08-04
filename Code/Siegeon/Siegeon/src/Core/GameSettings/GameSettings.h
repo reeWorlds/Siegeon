@@ -15,7 +15,6 @@ namespace GameSettings
 		VideoMode getVideoMode() const;
 		std::string getResolution() const;
 		sf::Vector2i getResolutionInt() const;
-		int32_t getUiScale() const;
 		std::string getFontName() const;
 		double getSoundVolume() const;
 		double getMusicVolume() const;

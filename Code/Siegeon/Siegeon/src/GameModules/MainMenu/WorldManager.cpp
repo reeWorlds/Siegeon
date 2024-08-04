@@ -38,6 +38,9 @@ namespace GameModules
 			World* toWorld = dynamic_cast<World*>(to.get());
 
 			toWorld->pos = fromWorld->pos;
+
+			toWorld->interface->copyState(*fromWorld->interface);
+			toWorld->button->copyState(*fromWorld->button);
 		}
 
 		void WorldManager::init()
@@ -57,6 +60,8 @@ namespace GameModules
 
 				if (eventData.has_value())
 				{
+					world->interface->update(eventData.value());
+
 					sf::Event event = eventData.value().event;
 
 					// if '+' was pressed
@@ -89,6 +94,12 @@ namespace GameModules
 		{
 			double speed = 0.1;
 			world->pos += speed * elapsedTime;
+
+			if (world->button->getWasPressedAndReset())
+			{
+				world->pos -= 100;
+			}
+
 			if (world->pos > 500)
 			{
 				world->pos = 200;
