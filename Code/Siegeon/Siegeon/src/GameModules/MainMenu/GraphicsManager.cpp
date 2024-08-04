@@ -41,6 +41,8 @@ namespace GameModules
 			shape.setPosition((float)world->pos, (float)world->pos);
 			window.draw(shape);
 
+			world->interface->render(window);
+
 
 
 			window.display();

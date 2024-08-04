@@ -16,8 +16,6 @@ namespace GameSettings
 		videoMode = DEFAULT_VIDEO_MODE;
 		resolution = DEFAULT_RESOLUTION;
 
-		uiScale = DEFAULT_UI_SCALE;
-
 		std::vector<std::string> availableFonts = FontManager::FontManager::getInstance().getListOfFonts();
 		fontName = availableFonts[0];
 		for (auto& _fontName : availableFonts)
@@ -74,15 +72,10 @@ namespace GameSettings
 			int32_t width = resolutionInt.x;
 			int32_t height = resolutionInt.y;
 
-			for (auto _videoMode : sf::VideoMode::getFullscreenModes())
+			for (auto& _videoMode : sf::VideoMode::getFullscreenModes())
 			{
 				if (_videoMode.width == width && _videoMode.height == height) { checkSum++; break; }
 			}
-		}
-
-		for (int32_t _uiScale : POSSIBLE_UI_SCALES)
-		{
-			if (uiScale == _uiScale) { checkSum++; break; }
 		}
 
 		for (auto& _fontName : FontManager::FontManager::getInstance().getListOfFonts())
@@ -93,7 +86,7 @@ namespace GameSettings
 		if (soundVolume >= MIN_VOLUME && soundVolume <= MAX_VOLUME) { checkSum++; }
 		if (musicVolume >= MIN_VOLUME && musicVolume <= MAX_VOLUME) { checkSum++; }
 
-		if (checkSum == 7) { return true; }
+		if (checkSum == 6) { return true; }
 
 		return false;
 	}

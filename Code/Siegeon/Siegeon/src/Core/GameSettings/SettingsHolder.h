@@ -18,7 +18,6 @@ namespace GameSettings
 		VideoMode videoMode;
 		std::string resolution;
 
-		int32_t uiScale;
 		std::string fontName;
 
 		double soundVolume;

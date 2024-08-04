@@ -174,6 +174,10 @@
     <ClCompile Include="src\GameModules\MainMenu\SharedState.cpp" />
     <ClCompile Include="src\GameModules\MainMenu\World.cpp" />
     <ClCompile Include="src\GameModules\MainMenu\WorldManager.cpp" />
+    <ClCompile Include="src\Graphics\UI\Button.cpp" />
+    <ClCompile Include="src\Graphics\UI\Interface.cpp" />
+    <ClCompile Include="src\Graphics\UI\Widget.cpp" />
+    <ClCompile Include="src\Graphics\UI\WidgetGroup.cpp" />
     <ClCompile Include="src\main_thread_loop.cpp" />
     <ClCompile Include="src\Resources\FontManager\FontManager.cpp" />
     <ClCompile Include="src\Core\GameSettings\GameSettings.cpp" />
@@ -197,6 +201,10 @@
     <ClInclude Include="src\GameModules\MainMenu\SharedState.h" />
     <ClInclude Include="src\GameModules\MainMenu\World.h" />
     <ClInclude Include="src\GameModules\MainMenu\WorldManager.h" />
+    <ClInclude Include="src\Graphics\UI\Constants.h" />
+    <ClInclude Include="src\Graphics\UI\Button.h" />
+    <ClInclude Include="src\Graphics\UI\Widget.h" />
+    <ClInclude Include="src\Graphics\UI\WidgetGroup.h" />
     <ClInclude Include="src\main_thread_loop.h" />
     <ClInclude Include="src\Resources\FontManager\Constants.h" />
     <ClInclude Include="src\Resources\FontManager\FontManager.h" />
@@ -211,6 +219,7 @@
     <ClInclude Include="src\GameModules\GameModule\SharedState.h" />
     <ClInclude Include="src\GameModules\GameModule\World.h" />
     <ClInclude Include="src\GameModules\GameModule\Constants.h" />
+    <ClInclude Include="src\Graphics\UI\Interface.h" />
     <ClInclude Include="src\Utils\StringUtils\StringUtils.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

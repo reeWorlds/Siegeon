@@ -17,11 +17,11 @@ namespace GameModules
 
 		void MainMenu::initOnRun()
 		{
-			worlds[0] = std::shared_ptr<World>(new World());
-			worlds[1] = std::shared_ptr<World>(new World());
-			sharedState = std::shared_ptr<SharedState>(new SharedState());
-			worldManager = std::shared_ptr<WorldManager>(new WorldManager(sharedState));
-			graphicsManager = std::shared_ptr<GraphicsManager>(new GraphicsManager(sharedState));
+			worlds[0] = std::make_shared<World>();
+			worlds[1] = std::make_shared<World>(*worlds[0]);
+			sharedState = std::make_shared<SharedState>();
+			worldManager = std::make_shared<WorldManager>(sharedState);
+			graphicsManager = std::make_shared<GraphicsManager>(sharedState);
 
 			_setWorld(0, worlds[0]);
 			_setWorld(1, worlds[1]);
