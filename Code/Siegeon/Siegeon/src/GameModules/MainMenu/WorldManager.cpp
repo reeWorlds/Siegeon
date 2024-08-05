@@ -1,8 +1,11 @@
+#define _USE_MATH_DEFINES
+
 #include "WorldManager.h"
 #include "Constants.h"
 #include "../../Core/Window/WindowManager.h"
 #include "../../Core/Entities/WindowEventData.h"
 #include "../../Core/Containers/ThreadDeque.hpp"
+#include <cmath>
 
 #include <SFML/Window.hpp>
 #include <SFML/Graphics.hpp>
@@ -37,10 +40,18 @@ namespace GameModules
 			World* fromWorld = dynamic_cast<World*>(from.get());
 			World* toWorld = dynamic_cast<World*>(to.get());
 
-			toWorld->pos = fromWorld->pos;
-
 			toWorld->interface->copyState(*fromWorld->interface);
-			toWorld->button->copyState(*fromWorld->button);
+
+			toWorld->menuGroup->copyState(*fromWorld->menuGroup);
+
+			toWorld->newGameButton->copyState(*fromWorld->newGameButton);
+			toWorld->continueGameButton->copyState(*fromWorld->continueGameButton);
+			toWorld->settingsButton->copyState(*fromWorld->settingsButton);
+			toWorld->exitButton->copyState(*fromWorld->exitButton);
+
+			toWorld->logoTimeX = fromWorld->logoTimeX;
+			toWorld->logoTimeY = fromWorld->logoTimeY;
+			toWorld->logo->copyState(*fromWorld->logo);
 		}
 
 		void WorldManager::init()
@@ -61,19 +72,6 @@ namespace GameModules
 				if (eventData.has_value())
 				{
 					world->interface->update(eventData.value());
-
-					sf::Event event = eventData.value().event;
-
-					// if '+' was pressed
-					if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Add)
-					{
-						world->pos += 10;
-					}
-					// if '-' was pressed
-					else if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Subtract)
-					{
-						world->pos -= 10;
-					}
 				}
 				else
 				{
@@ -92,18 +90,26 @@ namespace GameModules
 		
 		void WorldManager::heavyUpdate(double elapsedTime)
 		{
-			double speed = 0.1;
-			world->pos += speed * elapsedTime;
-
-			if (world->button->getWasPressedAndReset())
+			if (world->exitButton->getWasPressedAndReset())
 			{
-				world->pos -= 100;
+				Window::WindowManager::getInstance().getWindow().close();
+
+				exit(0);
 			}
 
-			if (world->pos > 500)
+			world->logoTimeX += elapsedTime * LOGO_X_SPEED;
+			if (world->logoTimeX > 2 * M_PI)
 			{
-				world->pos = 200;
+				world->logoTimeX -= 2 * M_PI;
 			}
+			world->logoTimeY += elapsedTime * LOGO_Y_SPEED;
+			if (world->logoTimeY > 2 * M_PI)
+			{
+				world->logoTimeY -= 2 * M_PI;
+			}
+
+			world->logo->setCenter(LOGO_CEXTER_X + LOGO_SHIFT_AMPLITUDE * std::sin(world->logoTimeX),
+				LOGO_CEXTER_Y + LOGO_SHIFT_AMPLITUDE * std::sin(world->logoTimeY));
 		}
 	}
 }

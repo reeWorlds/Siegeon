@@ -24,6 +24,9 @@
     <ClCompile Include="src\Graphics\UI\Interface.cpp" />
     <ClCompile Include="src\Graphics\UI\Widget.cpp" />
     <ClCompile Include="src\Graphics\UI\WidgetGroup.cpp" />
+    <ClCompile Include="src\Resources\TextureManager\TextureManager.cpp" />
+    <ClCompile Include="src\Resources\TextureManager\MainMenuTextures.cpp" />
+    <ClCompile Include="src\Graphics\UI\TextureHolder.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\GameModules\GameModule\GameModule.h" />
@@ -55,5 +58,9 @@
     <ClInclude Include="src\Graphics\UI\Widget.h" />
     <ClInclude Include="src\Graphics\UI\WidgetGroup.h" />
     <ClInclude Include="src\Graphics\UI\Interface.h" />
+    <ClInclude Include="src\Resources\TextureManager\Constants.h" />
+    <ClInclude Include="src\Resources\TextureManager\TextureManager.h" />
+    <ClInclude Include="src\Resources\TextureManager\MainMenuTextures.h" />
+    <ClInclude Include="src\Graphics\UI\TextureHolder.h" />
   </ItemGroup>
 </Project>

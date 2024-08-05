@@ -1,5 +1,6 @@
 #include "MainMenu.h"
 #include "../GameModule/Constants.h"
+#include "../../Resources/TextureManager/TextureManager.h"
 
 #include <thread>
 #include <chrono>
@@ -11,9 +12,15 @@ namespace GameModules
 {
 	namespace MainMenu
 	{
-		MainMenu::MainMenu() { }
+		MainMenu::MainMenu()
+		{
+			TextureManager::TextureManager::getMainMenuTexturesInstance().loadTextures();
+		}
 
-		MainMenu::~MainMenu() { }
+		MainMenu::~MainMenu()
+		{
+			TextureManager::TextureManager::getMainMenuTexturesInstance().unloadTextures();
+		}
 
 		void MainMenu::initOnRun()
 		{
