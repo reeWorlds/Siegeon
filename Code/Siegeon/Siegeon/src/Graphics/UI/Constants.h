@@ -11,6 +11,7 @@ namespace UI
 		NONE,
 		WIDGETGROUP,
 		BUTTON,
+		TEXTUREHOLDER,
 	};
 
 	namespace ButtonHelpers
@@ -37,9 +38,25 @@ namespace UI
 
 		inline const sf::Color DEFAULT_TEXT_COLOR = sf::Color::Black;
 		inline constexpr int32_t DEFAULT_TEXT_SIZE = 20;
-		inline const sf::Color DEFAULT_TEXT_OUTLINE_COLOR = sf::Color::Black;
+		inline const sf::Color DEFAULT_TEXT_OUTLINE_COLOR = sf::Color::White;
 		inline constexpr float DEFAULT_TEXT_OUTLINE_THICKNESS = 1.0;
-		inline constexpr const char* DEFAULT_TEST_STRING = "Button";
+		inline const char* DEFAULT_TEXT_STRING = "Button";
 		inline constexpr sf::Uint32 DEFAULT_TEXT_STYLE = sf::Text::Regular;
+	}
+
+	namespace TextureHolderHelpers
+	{
+		enum class ScalingMode : int32_t
+		{
+			PROPORTIONAL,
+			STRETCH,
+		};
+
+		inline constexpr double DEFAULT_TEXTUREHOLDER_CEXTER_X = 0.0;
+		inline constexpr double DEFAULT_TEXTUREHOLDER_CEXTER_Y = 0.0;
+		inline constexpr double DEFAULT_TEXTUREHOLDER_HALF_WIDTH = 0.5;
+		inline constexpr double DEFAULT_TEXTUREHOLDER_HALF_HEIGHT = 0.5;
+
+		inline constexpr ScalingMode DEFAULT_SCALING_MODE = ScalingMode::PROPORTIONAL;
 	}
 }

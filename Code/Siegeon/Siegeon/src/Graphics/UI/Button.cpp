@@ -18,6 +18,13 @@ namespace UI
 		_init(DEFAULT_CEXTER_X, DEFAULT_CEXTER_Y, DEFAULT_HALF_WIDTH, DEFAULT_HALF_HEIGHT);
 	}
 
+	Button::Button(double centerX, double centerY, double halfWidth, double halfHeight)
+	{
+		type = WidgetType::BUTTON;
+
+		_init(centerX, centerY, halfWidth, halfHeight);
+	}
+
 	Button::Button(const Button& other)
 	{
 		type = WidgetType::BUTTON;
@@ -26,13 +33,6 @@ namespace UI
 		_text = other._text;
 
 		copyState(other);
-	}
-
-	Button::Button(double centerX, double centerY, double halfWidth, double halfHeight)
-	{
-		type = WidgetType::BUTTON;
-
-		_init(centerX, centerY, halfWidth, halfHeight);
 	}
 
 	Button::~Button() { }
@@ -62,14 +62,20 @@ namespace UI
 
 		if (_states.second == ButtonState::ACTIVE)
 		{
-			if (currentlyActioned && event.type == sf::Event::MouseButtonReleased)
+			if (currentlyHovered)
 			{
-				_states.first = ButtonState::IDLE;
+				_states.first = ButtonState::ACTIVE;
 
-				if (currentlyHovered)
+				if (currentlyActioned && event.type == sf::Event::MouseButtonReleased)
 				{
+					_states.first = ButtonState::IDLE;
+
 					_wasPressed = true;
 				}
+			}
+			else
+			{
+				_states.first = ButtonState::IDLE;
 			}
 		}
 		else
@@ -115,20 +121,27 @@ namespace UI
 		
 		halfWindowWidth *= scaleX;
 		halfWindowHeight *= scaleY;
-		double centerX = windowCenterX + _centerX * halfWindowWidth;
-		double centerY = windowCenterY + _centerY * halfWindowHeight;
 
+		double rectCenterX = windowCenterX + _centerX * halfWindowWidth;
+		double rectCenterY = windowCenterY + _centerY * halfWindowHeight;
 		double rectHalfWidth = _halfWidth * halfWindowWidth;
 		double rectHalfHeight = _halfHeight * halfWindowHeight;
+
 		_rect->setSize(sf::Vector2f(float(rectHalfWidth * 2.0), float(rectHalfHeight * 2.0)));
-		_rect->setPosition(float(centerX - rectHalfWidth), float(centerY - rectHalfHeight));
+		_rect->setPosition(float(rectCenterX - rectHalfWidth), float(rectCenterY - rectHalfHeight));
 
 		_text->setFont(*font);
 		sf::FloatRect textRect = _text->getLocalBounds();
-		_text->setPosition(float(centerX - textRect.width / 2.0f - textRect.left),
-			float(centerY - textRect.height / 2.0f - textRect.top));
+		_text->setPosition(float(rectCenterX - textRect.width / 2.0f - textRect.left),
+			float(rectCenterY - textRect.height / 2.0f - textRect.top));
 
-		// todo check for correctness
+		_isConstructed = true;
+		_needReconstuction = false;
+	}
+
+	sf::FloatRect Button::boundingBox()
+	{
+		return _rect->getGlobalBounds();
 	}
 
 	void Button::copyState(const Button& other)
@@ -170,11 +183,6 @@ namespace UI
 		sf::Font* font = FontManager::FontManager::getInstance().getFont(fontName);
 
 		construct(resolution.x, resolution.y, font);
-	}
-
-	sf::FloatRect Button::boundingBox()
-	{
-		return _rect->getGlobalBounds();
 	}
 
 	bool Button::getWasPressed() const
@@ -367,7 +375,7 @@ namespace UI
 		_text->setCharacterSize(DEFAULT_TEXT_SIZE);
 		_text->setOutlineColor(DEFAULT_TEXT_OUTLINE_COLOR);
 		_text->setOutlineThickness(DEFAULT_TEXT_OUTLINE_THICKNESS);
-		_text->setString(DEFAULT_TEST_STRING);
+		_text->setString(DEFAULT_TEXT_STRING);
 		_text->setStyle(DEFAULT_TEXT_STYLE);
 	}
 
